@@ -1,0 +1,16 @@
+{
+    "name": "SaveSystem",
+    "rootNamespace": "PocketHeroes.SaveSystem",
+    "references": [
+        "GUID:d385c3687d32348449f65e65aa5f7b1a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
