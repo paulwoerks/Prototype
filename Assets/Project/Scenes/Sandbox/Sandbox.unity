@@ -3494,12 +3494,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acda996f50114fc459a02e7ccd21d38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerName: MeleeAttack
-  enemies: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
-  avatarAnimator: {fileID: 1742866830}
   damage: 1
   attackRange: 2.5
   cooldown: 1
+  triggerName: MeleeAttack
+  avatarAnimator: {fileID: 1742866830}
+  attackSound:
+    hasVariants: 0
+    clip: {fileID: 8300000, guid: abc7ea6e315d98442b73350715e4bccf, type: 3}
+    variants: []
+    mixerGroup: {fileID: -4052406950935894606, guid: 38106ea4241c9ae4f8e07ad9e6821077, type: 2}
+    priority: 128
+    loop: 0
+    parent: {fileID: 1272908975}
+    doFade: 0
+    fadeIn: 0
+    fadeOut: 0
+    hasDelay: 0
+    delayIn: 0
+    delayOut: 0
+    volume: 0.5
+    pitch: 2
+    playRandomVolume: 0
+    volumeRange: {x: 0.8, y: 1}
+    playRandomPitch: 1
+    pitchRange: {x: 1.5, y: 2}
+    panStereo: 0
+    reverbZoneMix: 1
+    spatialBlend: 1
+    dopplerLevel: 0
+    rollOffMode: 1
+    distanceRange: {x: 1, y: 200}
+    showIgnores: 0
+    ignoreBypassEffects: 0
+    ignoreBypassListenerEffects: 0
+    ignoreBypassReverbZones: 0
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+  enemies: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
 --- !u!1 &1563088429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,6 +3911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e72082d37a693438e622e4a735f4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1742866828}
 --- !u!1001 &1758757790
 PrefabInstance:
   m_ObjectHideFlags: 0

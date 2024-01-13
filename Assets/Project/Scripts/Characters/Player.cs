@@ -3,7 +3,7 @@ using PocketHeroes.Input;
 
 namespace PocketHeroes.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    public class Player : MonoBehaviour
     {
         [SerializeField] float maxSpeed = 5f;
 

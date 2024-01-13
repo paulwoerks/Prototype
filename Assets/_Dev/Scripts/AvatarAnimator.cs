@@ -7,13 +7,13 @@ namespace PocketHeroes
     public class AvatarAnimator : MonoBehaviour
     {
         [Required]
-        public Animator Animator { get; private set; }
+        [SerializeField] Animator animator;
 
         public Action OnPerform;
 
-        private void Awake()
+        public void SetTrigger(string triggerName)
         {
-            Animator = GetComponent<Animator>();
+            animator.SetTrigger(triggerName);
         }
 
         public void Perform()

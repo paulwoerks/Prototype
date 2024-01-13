@@ -1,19 +1,22 @@
-using PocketHeroes.Core;
 using System.Collections;
 using UnityEngine;
+using PocketHeroes.Core;
+using PocketHeroes.Audio;
 
 namespace PocketHeroes
 {
     public class MeleeAttack : MonoBehaviour
     {
-        [SerializeField] string triggerName;
-        [SerializeField] TransformGroup enemies;
-
-        [SerializeField] AvatarAnimator avatarAnimator;
-
         [SerializeField] int damage = 1;
         [SerializeField] float attackRange = 5f;
         [SerializeField] float cooldown = 1f;
+
+        [SerializeField] string triggerName;
+        [SerializeField] AvatarAnimator avatarAnimator;
+
+        [SerializeField] PoolableAudio attackSound;
+
+        [SerializeField] TransformGroup enemies;
 
         bool canAttack = true;
 
@@ -26,14 +29,13 @@ namespace PocketHeroes
 
         void Perform()
         {
-            Debug.Log("Perform");
-            avatarAnimator.Animator.SetTrigger(triggerName);
+            attackSound.Play();
+            avatarAnimator.SetTrigger(triggerName);
             avatarAnimator.OnPerform += InflictDamage;
         }
 
         void InflictDamage()
         {
-            Debug.Log("InflictDamage");
             target.GetComponent<IDamagable>().TakeDamage(damage);
             avatarAnimator.OnPerform -= InflictDamage;
             StartCoroutine(Cooldown());

@@ -1,0 +1,17 @@
+{
+    "name": "Characters",
+    "rootNamespace": "PocketHeroes.Characters",
+    "references": [
+        "GUID:a915cf96a440c4f40afa3f7af29ede6f",
+        "GUID:200471ee9c7ac6c4ba1dba3e335a78d3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

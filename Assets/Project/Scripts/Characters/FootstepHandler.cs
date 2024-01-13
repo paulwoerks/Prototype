@@ -3,7 +3,7 @@ using PocketHeroes.Audio;
 
 namespace PocketHeroes.Player
 {
-    public class FootSteps : MonoBehaviour
+    public class FootstepHandler : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField] LayerMask groundLayer;
@@ -14,11 +14,11 @@ namespace PocketHeroes.Player
         /// <summary>
         /// Gets called by animation event
         /// </summary>
-        void Step()
+        void TakeStep()
         {
             PoolableAudio clip = GetMaterialSound();
 
-            AudioPooler.Play(clip);
+            clip.Play();
         }
 
         /// <summary>
