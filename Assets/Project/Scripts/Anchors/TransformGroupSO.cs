@@ -5,7 +5,7 @@ using System;
 namespace PocketHeroes.Core
 {
     [CreateAssetMenu(menuName = "Group/Transform Group")]
-    public class TransformGroup : BaseSO
+    public class TransformGroupSO : BaseSO
     {
         [SerializeField] List<Transform> transforms = new();
         public List<Transform> Transforms => transforms;

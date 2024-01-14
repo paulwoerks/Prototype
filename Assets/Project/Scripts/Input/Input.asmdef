@@ -2,8 +2,8 @@
     "name": "Input",
     "rootNamespace": "PocketHeroes.Input",
     "references": [
-        "GUID:c8ecc36348efdae49bfd0a62224f90d7",
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:d385c3687d32348449f65e65aa5f7b1a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

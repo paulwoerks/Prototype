@@ -16,7 +16,7 @@ namespace PocketHeroes
 
         [SerializeField] PoolableAudio attackSound;
 
-        [SerializeField] TransformGroup enemies;
+        [SerializeField] TransformGroupSO enemies;
 
         bool canAttack = true;
 

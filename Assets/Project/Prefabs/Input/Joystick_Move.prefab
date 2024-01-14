@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -248.40009}
+  m_AnchoredPosition: {x: 0, y: -248.40002}
   m_SizeDelta: {x: 432, y: 432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &22285716
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 9597794}
   - component: {fileID: 22508766}
   m_Layer: 5
-  m_Name: Joystick_PlayerMovement
+  m_Name: Joystick_Move
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525cd1a664407ed43a6bd81bda4dad3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlPath: 
+  _controlPath: <AndroidJoystick>/stick
   joystickBase: {fileID: 22420356}
   joystick: {fileID: 22491998}
   scalingAxis: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   tensionDeadZone: 0.1
   TensionAccents:
   - {fileID: 114707281213778044}
-  joystickName: PlayerMovement
+  joystickName: Move
 --- !u!95 &9597794
 Animator:
   serializedVersion: 5

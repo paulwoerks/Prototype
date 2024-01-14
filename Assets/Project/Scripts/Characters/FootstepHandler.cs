@@ -1,7 +1,7 @@
 using UnityEngine;
 using PocketHeroes.Audio;
 
-namespace PocketHeroes.Player
+namespace PocketHeroes.Characters
 {
     public class FootstepHandler : MonoBehaviour
     {
