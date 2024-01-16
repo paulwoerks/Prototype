@@ -1,13 +1,18 @@
 {
-    "name": "Characters",
-    "rootNamespace": "PocketHeroes.Characters",
+    "name": "Dev",
+    "rootNamespace": "",
     "references": [
         "GUID:8c7805d193583bd40b051813e8768bd9",
         "GUID:a915cf96a440c4f40afa3f7af29ede6f",
+        "GUID:aafe7cba2670da2498babe50412e50e6",
         "GUID:c2e1fa2481719744f854e175c4b19836",
         "GUID:d385c3687d32348449f65e65aa5f7b1a",
         "GUID:a8e8f61d29823b243bdde23b42031f2b",
-        "GUID:200471ee9c7ac6c4ba1dba3e335a78d3"
+        "GUID:200471ee9c7ac6c4ba1dba3e335a78d3",
+        "GUID:d5ada0dcd11a06049936072bb3b3ed73",
+        "GUID:8ba1cf4afa640804e94ba034367104ab",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:ba8c092d026123a418fb4bfb797a7bd8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

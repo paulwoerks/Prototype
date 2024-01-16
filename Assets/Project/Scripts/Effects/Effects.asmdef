@@ -1,0 +1,16 @@
+{
+    "name": "Effects",
+    "rootNamespace": "PocketHeroes.Effects",
+    "references": [
+        "GUID:c2e1fa2481719744f854e175c4b19836"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

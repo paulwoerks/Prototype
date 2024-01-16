@@ -1,16 +1,23 @@
 using UnityEngine;
 using PocketHeroes.Input;
+using PocketHeroes.Anchors;
+using PocketHeroes.Combat;
 
 namespace PocketHeroes.Characters
 {
-    public class Hero : MonoBehaviour
+    public class Hero : MonoBehaviour, IDamagable
     {
+        [Header("Stats")]
         [SerializeField] bool debug;
-
         [SerializeField] float moveSpeed = 5f;
-        Animator animator;
 
+        [Header("Components")]
+        [SerializeField] Health health;
+        Animator animator;
         CharacterController characterController;
+
+        [Header("References")]
+        [SerializeField] TransformAnchor heroAnchor;
 
         Vector3 inputDirection;
         Vector3 gravity;
@@ -31,11 +38,13 @@ namespace PocketHeroes.Characters
         }
         private void OnEnable()
         {
+            heroAnchor.Provide(transform);
             InputReader.Instance.MoveEvent += OnMove;
         }
 
         private void OnDisable()
         {
+            heroAnchor.Unset();
             InputReader.Instance.MoveEvent -= OnMove;
         }
 
@@ -48,6 +57,18 @@ namespace PocketHeroes.Characters
             HandleAnimations();
         }
         #endregion
+
+        #region Public
+        public void TakeDamage(int amount)
+        {
+            if (health.IsDead)
+                return;
+
+            health.InflictDamage(amount);
+        }
+        #endregion
+
+        #region Movement
         void HandleRotation()
         {
             if (magnitude <= 0) { return; }
@@ -75,7 +96,7 @@ namespace PocketHeroes.Characters
                 gravity.y = -9.8f;
             }
         }
-
+        #endregion
         void HandleAnimations()
         {
 

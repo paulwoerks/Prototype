@@ -137,6 +137,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8098971498072081993}
   - component: {fileID: 4724665968335416449}
+  - component: {fileID: 4764894664894460840}
+  - component: {fileID: 6489002912951615276}
   m_Layer: 0
   m_Name: TargetDummy
   m_TagString: Enemy
@@ -172,8 +174,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256069f44835d75448612cd221fd56cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransforms: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+  health: {fileID: 4764894664894460840}
   animator: {fileID: 3502378796880628028}
+  group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+  heroAnchor: {fileID: 0}
+--- !u!114 &4764894664894460840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216188366283501864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c876d2fe491ce5449e5ddc2160a0594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 5
+--- !u!114 &6489002912951615276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216188366283501864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c785c62acd7e414bacf55e158a3986e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 4764894664894460840}
+  skinnedMeshRenderer: {fileID: 6010307070701592470}
 --- !u!1 &3054710700181188774
 GameObject:
   m_ObjectHideFlags: 0

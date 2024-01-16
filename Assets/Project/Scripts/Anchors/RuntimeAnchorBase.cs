@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace PocketHeroes.Core
+namespace PocketHeroes.Anchors
 {
     /// <summary>
     /// Base Class for Anchors

@@ -1129,6 +1129,11 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 784967695}
+--- !u!137 &547714512 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6487041610101962486, guid: 70834eb7a6373b14e9e8bebb51c1b364, type: 3}
+  m_PrefabInstance: {fileID: 1215810917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &548329573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3513,9 +3518,10 @@ GameObject:
   - component: {fileID: 1559056964}
   - component: {fileID: 1559056967}
   - component: {fileID: 1559056966}
+  - component: {fileID: 1559056968}
   - component: {fileID: 1559056965}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3628,6 +3634,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 0
   moveSpeed: 5
+  health: {fileID: 1559056968}
+  heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
+--- !u!114 &1559056968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559056962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c876d2fe491ce5449e5ddc2160a0594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 10
 --- !u!1 &1563088429
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,6 +4149,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1762814207}
   - component: {fileID: 1762814208}
+  - component: {fileID: 1762814210}
+  - component: {fileID: 1762814209}
   m_Layer: 0
   m_Name: Worm
   m_TagString: Enemy
@@ -4162,8 +4186,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbc265fcd2a32c44a442cd0c0665193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 1762814210}
   animator: {fileID: 323758448}
-  enemies: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+  group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+  heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
+  rotationSpeed: 5
+  state: 0
+--- !u!114 &1762814209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762814206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c785c62acd7e414bacf55e158a3986e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1762814210}
+  skinnedMeshRenderer: {fileID: 547714512}
+--- !u!114 &1762814210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762814206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c876d2fe491ce5449e5ddc2160a0594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 5
 --- !u!1 &1849557067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,9 +4666,13 @@ PrefabInstance:
       value: TargetDummy
       objectReference: {fileID: 0}
     - target: {fileID: 4724665968335416449, guid: 06d0c353705d184468955ad3c8c25874, type: 3}
-      propertyPath: enemies
+      propertyPath: moveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724665968335416449, guid: 06d0c353705d184468955ad3c8c25874, type: 3}
+      propertyPath: heroAnchor
       value: 
-      objectReference: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+      objectReference: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
     - target: {fileID: 8098971498072081993, guid: 06d0c353705d184468955ad3c8c25874, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.88

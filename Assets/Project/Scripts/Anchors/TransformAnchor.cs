@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace PocketHeroes.Core
+namespace PocketHeroes.Anchors
 {
-    [CreateAssetMenu(menuName = "Anchor/Transform Anchor")]
+    [CreateAssetMenu(menuName = "Anchors/Transform Anchor")]
     public class TransformAnchor : RuntimeAnchorBase<Transform> { }
 }

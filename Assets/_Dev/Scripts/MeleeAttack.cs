@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
-using PocketHeroes.Core;
+using PocketHeroes.Anchors;
 using PocketHeroes.Audio;
 
-namespace PocketHeroes
+namespace PocketHeroes.Combat
 {
     public class MeleeAttack : MonoBehaviour
     {

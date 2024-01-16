@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace PocketHeroes.Core
+namespace PocketHeroes.Anchors
 {
-    [CreateAssetMenu(menuName = "Group/Transform Group")]
+    [CreateAssetMenu(menuName = "Anchors/Transform Group")]
     public class TransformGroupSO : BaseSO
     {
         [SerializeField] List<Transform> transforms = new();
