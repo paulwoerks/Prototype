@@ -1,5 +1,7 @@
 using PocketHeroes.Anchors;
 using PocketHeroes.Combat;
+using PocketHeroes.Pooling;
+using PocketHeroes.Effects;
 using UnityEngine;
 
 namespace PocketHeroes.Characters
@@ -18,6 +20,8 @@ namespace PocketHeroes.Characters
         [SerializeField] TransformGroupSO group;
         [SerializeField] TransformAnchor heroAnchor;
 
+        [SerializeField] SpecialEffectSO deathEffect;
+
         public Health Health => health;
         public Animator Animator => animator;
         public TransformGroupSO Group => group;
@@ -25,7 +29,6 @@ namespace PocketHeroes.Characters
 
         int takeDamageHash;
         int isDeadHash;
-
         #endregion
 
         #region LifeCycle
@@ -39,6 +42,8 @@ namespace PocketHeroes.Characters
             Animator.SetBool(isDeadHash, false);
             group.Add(transform);
             health.DieEvent += OnDie;
+
+            health.SetCurrentHealth(health.MaxHealth);
         }
 
         public virtual void OnDisable()
@@ -61,11 +66,19 @@ namespace PocketHeroes.Characters
             Animator.SetTrigger(takeDamageHash);
         }
 
-
         public virtual void OnDie()
         {
             Animator.SetBool(isDeadHash, true);
             group.Remove(transform);
+
+            float deathTimer = 2f;
+            Invoke(nameof(Despawn), deathTimer);
+        }
+
+        void Despawn()
+        {
+            deathEffect?.Play(transform.position);
+            Pooler.Despawn(gameObject);
         }
     }
 }

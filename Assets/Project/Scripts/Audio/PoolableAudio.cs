@@ -139,6 +139,11 @@ namespace PocketHeroes.Audio
 
         public void Stop() => AudioPooler.Stop(this);
 
+        public void SetParent(Transform parent)
+        {
+            this.parent = parent;
+        }
+
         public AudioSource SetupAudioSource(AudioSource audioSource)
         {
             if (hasVariants && variants.Length > 0)

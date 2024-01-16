@@ -2,7 +2,10 @@
     "name": "Effects",
     "rootNamespace": "PocketHeroes.Effects",
     "references": [
-        "GUID:c2e1fa2481719744f854e175c4b19836"
+        "GUID:a915cf96a440c4f40afa3f7af29ede6f",
+        "GUID:d385c3687d32348449f65e65aa5f7b1a",
+        "GUID:c2e1fa2481719744f854e175c4b19836",
+        "GUID:a00ff0d4bf796af4f92cc4e105552327"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

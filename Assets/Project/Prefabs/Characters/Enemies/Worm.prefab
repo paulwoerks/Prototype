@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1977703122432495619}
   - component: {fileID: 2286219941605316585}
   - component: {fileID: 252314231160843023}
-  - component: {fileID: -2190752616220822296}
   m_Layer: 0
   m_Name: Worm
   m_TagString: Enemy
@@ -52,7 +51,8 @@ MonoBehaviour:
   animator: {fileID: 1573158005112955299}
   group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
   heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
-  rotationSpeed: 5
+  deathEffect: {fileID: 11400000, guid: 2f5703bcb5e39884d9871088523c8868, type: 2}
+  rotationSpeed: 0.75
   state: 0
 --- !u!114 &2286219941605316585
 MonoBehaviour:
@@ -82,20 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 2286219941605316585}
   skinnedMeshRenderer: {fileID: 4240500487637508152}
---- !u!114 &-2190752616220822296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739777012841304725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0deff153357b77e4b879ee4a8c5fbddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathTimer: 2
-  health: {fileID: 2286219941605316585}
 --- !u!1001 &6980528022651606734
 PrefabInstance:
   m_ObjectHideFlags: 0
