@@ -4,8 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - enemyTransforms: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+  - health: {instanceID: 0}
   - animator: {instanceID: 0}
+  - group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
+  - heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

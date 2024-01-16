@@ -19,6 +19,9 @@ namespace PocketHeroes.Characters
         [Header("References")]
         [SerializeField] TransformAnchor heroAnchor;
 
+        [Header("Listening to")]
+        [SerializeField] Vector2EventChannelSO OnMoveEvent;
+
         Vector3 inputDirection;
         Vector3 gravity;
         float magnitude;
@@ -26,6 +29,7 @@ namespace PocketHeroes.Characters
         // 25:10 https://www.youtube.com/watch?v=bXNFxQpp2qk&t=9s
         int isWalkingHash;
         int isRunningHash;
+        int isDeadHash;
 
         #region LifeCycle
         private void Awake()
@@ -33,28 +37,31 @@ namespace PocketHeroes.Characters
             characterController = GetComponent<CharacterController>();
             animator = transform.Find("Avatar").GetComponent<Animator>();
 
-            isWalkingHash = Animator.StringToHash("isWalking");
-            isRunningHash = Animator.StringToHash("isRunning");
+            isWalkingHash = Animator.StringToHash("IsWalking");
+            isRunningHash = Animator.StringToHash("IsRunning");
+            isDeadHash = Animator.StringToHash("IsDead");
         }
         private void OnEnable()
         {
             heroAnchor.Provide(transform);
-            InputReader.Instance.MoveEvent += OnMove;
+            OnMoveEvent.Subscribe(OnMove, this);
+            this.Log("+ OnMove");
         }
 
         private void OnDisable()
         {
             heroAnchor.Unset();
-            InputReader.Instance.MoveEvent -= OnMove;
+            OnMoveEvent.Unsubscribe(OnMove, this);
+            this.Log("- OnMove");
         }
 
         private void Update()
         {
-            HandleRotation();
-            HandleMovement();
+            RotateToInput();
+            MoveForward();
             HandleGravity();
 
-            HandleAnimations();
+            AnimateMovement();
         }
         #endregion
 
@@ -65,11 +72,24 @@ namespace PocketHeroes.Characters
                 return;
 
             health.InflictDamage(amount);
+
+            animator.SetTrigger(isDeadHash);
         }
         #endregion
 
         #region Movement
-        void HandleRotation()
+        void OnMove(Vector2 inputVector)
+        {
+            this.Log($"{inputVector}, {inputVector.magnitude}", debug);
+
+            float cameraAngle = Camera.main.transform.rotation.y - 45f;
+
+            magnitude = inputVector.magnitude;
+
+            inputDirection = Quaternion.Euler(0, cameraAngle, 0) * new Vector3(inputVector.x, 0, inputVector.y);
+        }
+
+        void RotateToInput()
         {
             if (magnitude <= 0) { return; }
 
@@ -81,7 +101,7 @@ namespace PocketHeroes.Characters
             transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        void HandleMovement()
+        void MoveForward()
         {
             characterController.Move((inputDirection * moveSpeed + gravity) * Time.deltaTime);
         }
@@ -96,8 +116,7 @@ namespace PocketHeroes.Characters
                 gravity.y = -9.8f;
             }
         }
-        #endregion
-        void HandleAnimations()
+        void AnimateMovement()
         {
 
             bool isWalking = animator.GetBool(isWalkingHash);
@@ -119,14 +138,6 @@ namespace PocketHeroes.Characters
                     break;
             }
         }
-
-        void OnMove(Vector2 inputVector)
-        {
-            float cameraAngle = Camera.main.transform.rotation.y - 45f;
-
-            magnitude = inputVector.magnitude;
-
-            inputDirection = Quaternion.Euler(0, cameraAngle, 0) * new Vector3(inputVector.x, 0, inputVector.y);
-        }
+        #endregion
     }
 }

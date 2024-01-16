@@ -11,19 +11,20 @@ namespace PocketHeroes.Input
     /// <summary>
     /// Reads Input from the new Input System
     /// </summary>
-    public class InputReader : Singleton<InputReader>, GameInput.IGameplayActions
+    public class InputReader : MonoBehaviour, GameInput.IGameplayActions
     {
+        [SerializeField] bool debug;
+
+        [Header("References")]
         [Required][SerializeField] GameStateSO gameStateManager;
 
-        /// <summary>
-        /// Move Direction
-        /// </summary>
-        public event UnityAction<Vector2> MoveEvent = delegate { };
+        [Header("Broadcasting on")]
+        [SerializeField] Vector2EventChannelSO MoveEvent;
 
         GameInput gameInput;
 
         #region LifeCyle
-        private void OnEnable()
+        void OnEnable()
         {
             if (gameInput == null)
             {
@@ -33,7 +34,7 @@ namespace PocketHeroes.Input
             EnableGameplayInput();
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             DisableAllInput();
         }
@@ -46,9 +47,9 @@ namespace PocketHeroes.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             Vector2 moveDirection = context.ReadValue<Vector2>();
-            float magnitude = moveDirection.magnitude;
-            MoveEvent.Invoke(moveDirection);
-            //this.Log($"Move Input: {context.ReadValue<Vector2>()}", debug);
+            MoveEvent?.Invoke(moveDirection);
+
+            this.Log($"Move: {context.ReadValue<Vector2>()}", debug);
         }
         #endregion
 

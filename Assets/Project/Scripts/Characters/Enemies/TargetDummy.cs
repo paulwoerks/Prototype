@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace PocketHeroes.Characters
 {
-    public class Dummy : Enemy
+    public class TargetDummy : Enemy
     {
-
         enum State { Idle, Running, Attacking, TakeDamage, Dead }
 
+        #region Fields
         [Header("Stats")]
         [SerializeField] float moveSpeed = 0.5f;
         [SerializeField] float rotationSpeed = 2.5f;
@@ -14,31 +14,42 @@ namespace PocketHeroes.Characters
         [Header("Behaviour")]
         [SerializeField] State state;
 
-        bool isMoving => Animator.GetBool("isMoving");
+        int isMovingHash;
+
+        bool isMoving => Animator.GetBool(isMovingHash);
+        #endregion
+
+        #region LifeCycle
+        public override void Awake()
+        {
+            isMovingHash = Animator.StringToHash("IsMoving");
+            base.Awake();
+        }
         private void Update()
         {
             if (!Health.IsDead)
             {
-                FacePlayer();
+                RotateTowardsPlayer();
                 Move();
             } 
             else if (isMoving)
             {
-                Animator.SetBool("isMoving", false);
+                Animator.SetBool(isMovingHash, false);
             }
         }
+        #endregion
 
         private void Move()
         {
             if (!isMoving)
             {
-                Animator.SetBool("isMoving", true);
+                Animator.SetBool(isMovingHash, true);
             }
 
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
 
-        void FacePlayer()
+        void RotateTowardsPlayer()
         {
             bool isActive = state.Equals(State.Idle) || state.Equals(State.Attacking);
             if (!isActive)

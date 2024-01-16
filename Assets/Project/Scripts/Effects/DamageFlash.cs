@@ -3,6 +3,9 @@ using PocketHeroes.Combat;
 
 namespace PocketHeroes.Effects
 {
+    /// <summary>
+    /// A simple flashing up of a material when health component gets hit.
+    /// </summary>
     public class DamageFlash : MonoBehaviour
     {
         Color color = Color.white;
@@ -21,12 +24,12 @@ namespace PocketHeroes.Effects
 
         void OnEnable()
         {
-            health.OnReceiveDamage += Blink;
+            health.ReceiveDamageEvent += Blink;
         }
 
         void OnDisable()
         {
-            health.OnReceiveDamage -= Blink;
+            health.ReceiveDamageEvent -= Blink;
             CancelInvoke();
         }
 

@@ -1,8 +1,11 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace PocketHeroes.Combat
 {
+    /// <summary>
+    /// Managing health and invoking events on damage and death
+    /// </summary>
     public class Health : MonoBehaviour
     {
         [SerializeField] int maxHealth;
@@ -13,8 +16,8 @@ namespace PocketHeroes.Combat
 
         public bool IsDead => currentHealth <= 0;
 
-        public Action OnReceiveDamage;
-        public Action OnDie;
+        public UnityAction ReceiveDamageEvent = delegate { };
+        public UnityAction DieEvent = delegate { };
         
         public void SetMaxHealth(int newAmount)
         {
@@ -29,12 +32,12 @@ namespace PocketHeroes.Combat
 
         public void InflictDamage(int amount)
         {
-            OnReceiveDamage?.Invoke();
+            ReceiveDamageEvent.Invoke();
             currentHealth -= amount;
             if (IsDead)
             {
                 currentHealth = 0;
-                OnDie?.Invoke();
+                DieEvent.Invoke();
             }
         }
 

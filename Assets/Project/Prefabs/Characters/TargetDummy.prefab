@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 4724665968335416449}
   - component: {fileID: 4764894664894460840}
   - component: {fileID: 6489002912951615276}
+  - component: {fileID: 5714164708606962995}
   m_Layer: 0
   m_Name: TargetDummy
   m_TagString: Enemy
@@ -177,7 +178,10 @@ MonoBehaviour:
   health: {fileID: 4764894664894460840}
   animator: {fileID: 3502378796880628028}
   group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
-  heroAnchor: {fileID: 0}
+  heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
+  moveSpeed: 1.5
+  rotationSpeed: 2.5
+  state: 0
 --- !u!114 &4764894664894460840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +210,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 4764894664894460840}
   skinnedMeshRenderer: {fileID: 6010307070701592470}
+--- !u!114 &5714164708606962995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216188366283501864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0deff153357b77e4b879ee4a8c5fbddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 2
+  health: {fileID: 4764894664894460840}
 --- !u!1 &3054710700181188774
 GameObject:
   m_ObjectHideFlags: 0

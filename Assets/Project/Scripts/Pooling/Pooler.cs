@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace PocketHeroes
+namespace PocketHeroes.Pooling
 {
     ///<summary>
     ///Pools Objects dynamically

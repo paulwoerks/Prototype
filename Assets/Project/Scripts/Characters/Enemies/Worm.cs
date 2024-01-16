@@ -6,6 +6,7 @@ namespace PocketHeroes.Characters
     {
         enum State { Idle, Hidden, Attacking, TakeDamage, Dead }
 
+        #region Fields
         [Header("Stats")]
         [SerializeField] float rotationSpeed = 5f;
 
@@ -19,7 +20,17 @@ namespace PocketHeroes.Characters
         // Wait for 5 Seconds
         // Repeat
 
+        int isHiddenHash;
+        int attackProjectileHash;
+        #endregion
+
         #region LifeCycle
+        public override void Awake()
+        {
+            isHiddenHash = Animator.StringToHash("IsHidden");
+            attackProjectileHash = Animator.StringToHash("AttackProjectile");
+            base.Awake();
+        }
         public override void OnEnable()
         {
             Appear();
@@ -36,55 +47,12 @@ namespace PocketHeroes.Characters
         {
             if (!Health.IsDead)
             {
-                FacePlayer();
+                RotateTowardsPlayer();
             }
         }
         #endregion
 
-        void FacePlayer()
-        {
-            bool isActive = state.Equals(State.Idle) || state.Equals(State.Attacking);
-            if (!isActive)
-                return;
-
-            Vector3 targetDirection = Hero.position - transform.position;
-            targetDirection.y = transform.position.y;
-
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-
-
-        void Appear()
-        {
-            transform.position = GetRandomPosition();
-
-            Animator.SetBool("isHidden", false);;
-            state = State.Idle;
-
-            Group.Add(transform);
-
-            Invoke("Attack", 3f);
-        }
-
-        void Attack()
-        {
-            Animator.SetTrigger("AttackProjectile");
-            state = State.Attacking;
-
-            Invoke("Hide", 2f);
-        }
-
-        void Hide()
-        {
-            Group.Remove(transform);
-            Animator.SetBool("isHidden", true);
-            state = State.Hidden;
-
-            Invoke("Appear", 3f);
-        }
-
+        #region Public
         public override void TakeDamage(int damage)
         {
             base.TakeDamage(damage);
@@ -97,11 +65,57 @@ namespace PocketHeroes.Characters
             Hide();
         }
 
-        public override void Die()
+        public override void OnDie()
         {
             CancelInvoke();
             state = State.Dead;
-            base.Die();
+            base.OnDie();
+        }
+        #endregion
+
+        #region Behaviour
+        void Appear()
+        {
+            transform.position = GetRandomPosition();
+
+            Animator.SetBool(isHiddenHash, false);;
+            state = State.Idle;
+
+            Group.Add(transform);
+
+            Invoke(nameof(Attack), 3f);
+        }
+
+        void Attack()
+        {
+            Animator.SetTrigger(attackProjectileHash);
+            state = State.Attacking;
+
+            Invoke(nameof(Hide), 2f);
+        }
+
+        void Hide()
+        {
+            Group.Remove(transform);
+            Animator.SetBool(isHiddenHash, true);
+            state = State.Hidden;
+
+            Invoke(nameof(Appear), 3f);
+        }
+        #endregion
+
+        void RotateTowardsPlayer()
+        {
+            bool isActive = state.Equals(State.Idle) || state.Equals(State.Attacking);
+            if (!isActive)
+                return;
+
+            Vector3 targetDirection = Hero.position - transform.position;
+            targetDirection.y = transform.position.y;
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
         Vector3 GetRandomPosition()

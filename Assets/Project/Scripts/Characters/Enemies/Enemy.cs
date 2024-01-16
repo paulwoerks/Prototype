@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace PocketHeroes.Characters
 {
+    /// <summary>
+    /// Base Class for enemies. Handles Damage and Death, Including animations. Also responsible for the enemy group subscription
+    /// </summary>
     public abstract class Enemy : MonoBehaviour, IDamagable
     {
         #region Fields
@@ -20,20 +23,28 @@ namespace PocketHeroes.Characters
         public TransformGroupSO Group => group;
         public Transform Hero => heroAnchor.Value;
 
+        int takeDamageHash;
+        int isDeadHash;
+
         #endregion
 
         #region LifeCycle
+        public virtual void Awake()
+        {
+            takeDamageHash = Animator.StringToHash("TakeDamage");
+            isDeadHash = Animator.StringToHash("IsDead");
+        }
         public virtual void OnEnable()
         {
-            Animator.SetBool("isDead", false);
+            Animator.SetBool(isDeadHash, false);
             group.Add(transform);
-            health.OnDie += Die;
+            health.DieEvent += OnDie;
         }
 
         public virtual void OnDisable()
         {
             group.Remove(transform);
-            health.OnDie -= Die;
+            health.DieEvent -= OnDie;
         }
         #endregion
 
@@ -47,13 +58,13 @@ namespace PocketHeroes.Characters
             if (amount <= 0)
                 return;
 
-            Animator.SetTrigger("TakeDamage");
+            Animator.SetTrigger(takeDamageHash);
         }
 
 
-        public virtual void Die()
+        public virtual void OnDie()
         {
-            Animator.SetBool("isDead", true);
+            Animator.SetBool(isDeadHash, true);
             group.Remove(transform);
         }
     }
