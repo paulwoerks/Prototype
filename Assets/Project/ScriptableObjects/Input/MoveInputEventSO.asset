@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418bea2998ebb1b4ab97e3af3d1059de, type: 3}
-  m_Name: GameState
+  m_Script: {fileID: 11500000, guid: 71753ab2bf82706458bbbd47eb75818c, type: 3}
+  m_Name: MoveInputEventSO
   m_EditorClassIdentifier: 
   debug: 0
   notes: 
-  currentGameState: 0
-  previousGameState: 1
+  subscribers:
+    GameObjects: []
+    ScriptableObjects: []

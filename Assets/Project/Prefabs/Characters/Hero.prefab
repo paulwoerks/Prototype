@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c260224b8d6ea94a97418d3eb37858b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   moveSpeed: 5
   health: {fileID: 8135112684190177450}
   heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
@@ -109,8 +109,9 @@ MonoBehaviour:
   damage: 1
   attackRange: 2.5
   cooldown: 1
-  triggerName: MeleeAttack
-  avatarAnimator: {fileID: 6048273546304485761}
+  animationName: Attack_Sword
+  animator: {fileID: 5598454302382265824}
+  animationEventHandler: {fileID: 3416248921294821289}
   attackSound:
     hasVariants: 0
     clip: {fileID: 8300000, guid: abc7ea6e315d98442b73350715e4bccf, type: 3}
@@ -260,7 +261,7 @@ PrefabInstance:
       addedObject: {fileID: 8729955567331336781}
     - targetCorrespondingSourceObject: {fileID: 8121650078269433535, guid: 435e8a184b942f541b86ca8dcba61830, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6048273546304485761}
+      addedObject: {fileID: 3416248921294821289}
   m_SourcePrefab: {fileID: 100100000, guid: 435e8a184b942f541b86ca8dcba61830, type: 3}
 --- !u!95 &5598454302382265824 stripped
 Animator:
@@ -319,7 +320,7 @@ MonoBehaviour:
     ignoreBypassReverbZones: 0
     ignoreListenerVolume: 0
     ignoreListenerPause: 0
---- !u!114 &6048273546304485761
+--- !u!114 &3416248921294821289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,10 +329,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5598454302382297922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e72082d37a693438e622e4a735f4ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 88fd481e4dcfb2542a5b7817e8c6ad6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 5598454302382265824}
 --- !u!4 &5598454302382657378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8121650078269209247, guid: 435e8a184b942f541b86ca8dcba61830, type: 3}

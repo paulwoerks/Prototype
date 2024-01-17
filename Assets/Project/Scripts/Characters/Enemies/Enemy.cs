@@ -9,7 +9,7 @@ namespace PocketHeroes.Characters
     /// <summary>
     /// Base Class for enemies. Handles Damage and Death, Including animations. Also responsible for the enemy group subscription
     /// </summary>
-    public abstract class Enemy : MonoBehaviour, IDamagable
+    public abstract class Enemy : MonoBehaviour, ISpawnable, IDamagable
     {
         #region Fields
         [Header("Components")]
@@ -27,6 +27,8 @@ namespace PocketHeroes.Characters
         public TransformGroupSO Group => group;
         public Transform Hero => heroAnchor.Value;
 
+        public SpecialEffectSO DeathEffect => deathEffect;
+
         int takeDamageHash;
         int isDeadHash;
         #endregion
@@ -37,7 +39,7 @@ namespace PocketHeroes.Characters
             takeDamageHash = Animator.StringToHash("TakeDamage");
             isDeadHash = Animator.StringToHash("IsDead");
         }
-        public virtual void OnEnable()
+        public virtual void OnSpawn()
         {
             Animator.SetBool(isDeadHash, false);
             group.Add(transform);
@@ -75,7 +77,7 @@ namespace PocketHeroes.Characters
             Invoke(nameof(Despawn), deathTimer);
         }
 
-        void Despawn()
+        public virtual void Despawn()
         {
             deathEffect?.Play(transform.position);
             Pooler.Despawn(gameObject);

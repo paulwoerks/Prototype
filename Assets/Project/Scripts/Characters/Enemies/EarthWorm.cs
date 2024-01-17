@@ -1,8 +1,9 @@
 using UnityEngine;
+using PocketHeroes.Effects;
 
 namespace PocketHeroes.Characters
 {
-    public class Worm : Enemy
+    public class EarthWorm : Enemy
     {
         enum State { Idle, Hidden, Attacking, TakeDamage, Dead }
 
@@ -20,6 +21,8 @@ namespace PocketHeroes.Characters
         // Wait for 5 Seconds
         // Repeat
 
+        [SerializeField] SpecialEffectSO spawnEffect;
+
         int isHiddenHash;
         int attackProjectileHash;
         #endregion
@@ -31,10 +34,10 @@ namespace PocketHeroes.Characters
             attackProjectileHash = Animator.StringToHash("AttackProjectile");
             base.Awake();
         }
-        public override void OnEnable()
+        public override void OnSpawn()
         {
+            base.OnSpawn();
             Appear();
-            base.OnEnable();
         }
 
         public override void OnDisable()
@@ -76,12 +79,16 @@ namespace PocketHeroes.Characters
         #region Behaviour
         void Appear()
         {
-            transform.position = GetRandomPosition();
+            Vector3 spawnPosition = GetRandomPosition();
+
+            transform.position = spawnPosition;
 
             Animator.SetBool(isHiddenHash, false);;
             state = State.Idle;
 
             Group.Add(transform);
+
+            spawnEffect.Play(spawnPosition);
 
             Invoke(nameof(Attack), 3f);
         }
@@ -99,6 +106,7 @@ namespace PocketHeroes.Characters
             Group.Remove(transform);
             Animator.SetBool(isHiddenHash, true);
             state = State.Hidden;
+            spawnEffect.Play(transform.position);
 
             Invoke(nameof(Appear), 3f);
         }

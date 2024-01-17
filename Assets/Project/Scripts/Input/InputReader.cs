@@ -15,8 +15,13 @@ namespace PocketHeroes.Input
     {
         [SerializeField] bool debug;
 
+
+        [Header("Movement")]
+        [SerializeField] bool fixedMagnitude = false;
+
         [Header("References")]
         [Required][SerializeField] GameStateSO gameStateManager;
+
 
         [Header("Broadcasting on")]
         [SerializeField] Vector2EventChannelSO MoveEvent;
@@ -47,6 +52,12 @@ namespace PocketHeroes.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             Vector2 moveDirection = context.ReadValue<Vector2>();
+
+            if (fixedMagnitude)
+            {
+                moveDirection = moveDirection.normalized;
+            }
+
             MoveEvent?.Invoke(moveDirection);
 
             this.Log($"Move: {context.ReadValue<Vector2>()}", debug);

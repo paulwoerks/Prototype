@@ -57,7 +57,7 @@ namespace PocketHeroes.Pooling
             pooledObject.SetParent(parent, true);
             pooledObject.SetPositionAndRotation(position, rotation);
 
-            if (pooledObject.TryGetComponent<ISpawn>(out ISpawn ISpawn))
+            if (pooledObject.TryGetComponent<ISpawnable>(out ISpawnable ISpawn))
             {
                 ISpawn.OnSpawn();
             }
@@ -76,7 +76,7 @@ namespace PocketHeroes.Pooling
 
             if (pools.TryGetValue(instance.name, out Pool pool))
             {
-                if (instance.TryGetComponent<IDespawn>(out IDespawn IDespawn))
+                if (instance.TryGetComponent<IDespawnable>(out IDespawnable IDespawn))
                     IDespawn.OnDespawn();
 
                 pool.AddToPool(instance);

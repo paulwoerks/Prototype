@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f5646e8e39c0b4f9065318d14152bd, type: 3}
+  m_Name: FX_EnemyDeathSO
+  m_EditorClassIdentifier: 
+  debug: 0
+  notes: 
+  visualFX: {fileID: 125699213738179748, guid: 807832c86129c0f4192c02cfdcd4e327, type: 3}
+  soundFX:
+    hasVariants: 0
+    clip: {fileID: 8300000, guid: 92a3b8a181df80c43bc5887b7a1cc6ae, type: 3}
+    variants: []
+    mixerGroup: {fileID: -4052406950935894606, guid: 38106ea4241c9ae4f8e07ad9e6821077, type: 2}
+    priority: 64
+    loop: 0
+    parent: {fileID: 0}
+    doFade: 0
+    fadeIn: 0
+    fadeOut: 0
+    hasDelay: 0
+    delayIn: 0
+    delayOut: 0
+    volume: 1
+    pitch: 1
+    playRandomVolume: 0
+    volumeRange: {x: 0.8, y: 1}
+    playRandomPitch: 1
+    pitchRange: {x: 0.9, y: 1.1}
+    panStereo: 0
+    reverbZoneMix: 1
+    spatialBlend: 1
+    dopplerLevel: 0
+    rollOffMode: 1
+    distanceRange: {x: 1, y: 200}
+    showIgnores: 0
+    ignoreBypassEffects: 0
+    ignoreBypassListenerEffects: 0
+    ignoreBypassReverbZones: 0
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0

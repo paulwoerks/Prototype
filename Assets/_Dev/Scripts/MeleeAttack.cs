@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PocketHeroes.Anchors;
 using PocketHeroes.Audio;
+using PocketHeroes.Characters;
 
 namespace PocketHeroes.Combat
 {
@@ -11,8 +12,9 @@ namespace PocketHeroes.Combat
         [SerializeField] float attackRange = 5f;
         [SerializeField] float cooldown = 1f;
 
-        [SerializeField] string triggerName;
-        [SerializeField] AvatarAnimator avatarAnimator;
+        [SerializeField] string animationName = "Attack_Sword";
+        [SerializeField] Animator animator;
+        [SerializeField] AnimationEventHandler animationEventHandler;
 
         [SerializeField] PoolableAudio attackSound;
 
@@ -30,14 +32,13 @@ namespace PocketHeroes.Combat
         void Perform()
         {
             attackSound.Play();
-            avatarAnimator.SetTrigger(triggerName);
-            avatarAnimator.OnPerform += InflictDamage;
+            animator.SetTrigger(animationName);
+            animationEventHandler.Subscribe(animationName, InflictDamage);
         }
 
         void InflictDamage()
         {
             target.GetComponent<IDamagable>().TakeDamage(damage);
-            avatarAnimator.OnPerform -= InflictDamage;
             StartCoroutine(Cooldown());
         }
 

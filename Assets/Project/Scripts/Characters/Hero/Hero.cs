@@ -45,14 +45,12 @@ namespace PocketHeroes.Characters
         {
             heroAnchor.Provide(transform);
             OnMoveEvent.Subscribe(OnMove, this);
-            this.Log("+ OnMove");
         }
 
         private void OnDisable()
         {
             heroAnchor.Unset();
             OnMoveEvent.Unsubscribe(OnMove, this);
-            this.Log("- OnMove");
         }
 
         private void Update()

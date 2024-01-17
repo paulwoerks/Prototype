@@ -1,3 +1,4 @@
+using PocketHeroes.Pooling;
 using UnityEngine;
 
 namespace PocketHeroes.Characters
@@ -61,6 +62,13 @@ namespace PocketHeroes.Characters
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
+        public override void Despawn()
+        {
+            Vector3 deathEffectPosition = transform.position + (transform.forward * -1f);
+            DeathEffect?.Play(deathEffectPosition);
+            Pooler.Despawn(gameObject);
         }
     }
 }

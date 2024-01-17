@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77f5646e8e39c0b4f9065318d14152bd, type: 3}
-  m_Name: FX_EnemyDeath
+  m_Name: FX_Earthworm_Digging
   m_EditorClassIdentifier: 
   debug: 0
   notes: 
-  visualFX: {fileID: 2875901528362033592, guid: e7ad8232064195f41a79567ae26de635, type: 3}
+  visualFX: {fileID: 1488254532844003037, guid: 510a2b2bc197c314f98f37e933676091, type: 3}
   soundFX:
     hasVariants: 0
-    clip: {fileID: 8300000, guid: 3b9dea197b17df4419162594ed330d34, type: 3}
+    clip: {fileID: 8300000, guid: 27c3e4f33079b7740ad4e97075ec0345, type: 3}
     variants: []
     mixerGroup: {fileID: -4052406950935894606, guid: 38106ea4241c9ae4f8e07ad9e6821077, type: 2}
-    priority: 128
+    priority: 64
     loop: 0
     parent: {fileID: 0}
     doFade: 0
@@ -29,18 +29,18 @@ MonoBehaviour:
     hasDelay: 0
     delayIn: 0
     delayOut: 0
-    volume: 1
+    volume: 0.3
     pitch: 1
     playRandomVolume: 0
     volumeRange: {x: 0.8, y: 1}
-    playRandomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
+    playRandomPitch: 1
+    pitchRange: {x: 0.8, y: 1.2}
     panStereo: 0
     reverbZoneMix: 1
-    spatialBlend: 0
+    spatialBlend: 1
     dopplerLevel: 0
-    rollOffMode: 0
-    distanceRange: {x: 1, y: 1000}
+    rollOffMode: 1
+    distanceRange: {x: 1, y: 200}
     showIgnores: 0
     ignoreBypassEffects: 0
     ignoreBypassListenerEffects: 0
