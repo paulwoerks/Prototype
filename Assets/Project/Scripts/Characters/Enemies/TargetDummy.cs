@@ -1,5 +1,5 @@
-using PocketHeroes.Pooling;
 using UnityEngine;
+using PocketHeroes.Pooling;
 
 namespace PocketHeroes.Characters
 {
@@ -56,10 +56,7 @@ namespace PocketHeroes.Characters
             if (!isActive)
                 return;
 
-            Vector3 targetDirection = Hero.position - transform.position;
-            targetDirection.y = transform.position.y;
-
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            Quaternion targetRotation = Utilities.GetRotationTowards(transform.position, Hero.position);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }

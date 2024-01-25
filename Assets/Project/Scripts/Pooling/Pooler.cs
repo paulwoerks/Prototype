@@ -54,8 +54,8 @@ namespace PocketHeroes.Pooling
 
             parent ??= activeInstances;
 
-            pooledObject.SetParent(parent, true);
             pooledObject.SetPositionAndRotation(position, rotation);
+            pooledObject.SetParent(parent, true);
 
             if (pooledObject.TryGetComponent<ISpawnable>(out ISpawnable ISpawn))
             {

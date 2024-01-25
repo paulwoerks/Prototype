@@ -21,6 +21,7 @@ namespace PocketHeroes.Characters
         [SerializeField] TransformAnchor heroAnchor;
 
         [SerializeField] SpecialEffectSO deathEffect;
+        [SerializeField] GameObject damagePopup;
 
         public Health Health => health;
         public Animator Animator => animator;
@@ -55,14 +56,17 @@ namespace PocketHeroes.Characters
         }
         #endregion
 
-        public virtual void TakeDamage(int amount)
+        public virtual void InflictDamage(int damage)
         {
             if (health.IsDead)
                 return;
 
-            health.InflictDamage(amount);
+            health.InflictDamage(damage);
 
-            if (amount <= 0)
+            DamagePopup popup = Pooler.Spawn(damagePopup, transform.position, Quaternion.identity).GetComponent<DamagePopup>();
+            popup.SetDamage(damage);
+
+            if (damage <= 0)
                 return;
 
             Animator.SetTrigger(takeDamageHash);

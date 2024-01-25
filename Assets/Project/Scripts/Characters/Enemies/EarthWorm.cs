@@ -1,5 +1,6 @@
 using UnityEngine;
 using PocketHeroes.Effects;
+using PocketHeores.Combat;
 
 namespace PocketHeroes.Characters
 {
@@ -22,6 +23,7 @@ namespace PocketHeroes.Characters
         // Repeat
 
         [SerializeField] SpecialEffectSO spawnEffect;
+        [SerializeField] RangedAttack attack;
 
         int isHiddenHash;
         int attackProjectileHash;
@@ -56,9 +58,9 @@ namespace PocketHeroes.Characters
         #endregion
 
         #region Public
-        public override void TakeDamage(int damage)
+        public override void InflictDamage(int damage)
         {
-            base.TakeDamage(damage);
+            base.InflictDamage(damage);
 
             if (Health.IsDead)
                 return;
@@ -83,6 +85,8 @@ namespace PocketHeroes.Characters
 
             transform.position = spawnPosition;
 
+            transform.rotation = Utilities.GetRotationTowards(spawnPosition, Hero.position);
+
             Animator.SetBool(isHiddenHash, false);;
             state = State.Idle;
 
@@ -97,6 +101,8 @@ namespace PocketHeroes.Characters
         {
             Animator.SetTrigger(attackProjectileHash);
             state = State.Attacking;
+
+            attack.Perform();
 
             Invoke(nameof(Hide), 2f);
         }
@@ -118,10 +124,7 @@ namespace PocketHeroes.Characters
             if (!isActive)
                 return;
 
-            Vector3 targetDirection = Hero.position - transform.position;
-            targetDirection.y = transform.position.y;
-
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            Quaternion targetRotation = Utilities.GetRotationTowards(transform.position, Hero.position);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1977703122432495619}
   - component: {fileID: 2286219941605316585}
   - component: {fileID: 252314231160843023}
+  - component: {fileID: 5877210776597635470}
   m_Layer: 0
   m_Name: EarthWorm
   m_TagString: Enemy
@@ -52,9 +53,11 @@ MonoBehaviour:
   group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
   heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
   deathEffect: {fileID: 11400000, guid: 2f5703bcb5e39884d9871088523c8868, type: 2}
+  damagePopup: {fileID: 637294996884386234, guid: 430d76cb68498e0489623eb256e84529, type: 3}
   rotationSpeed: 0.75
   state: 0
   spawnEffect: {fileID: 11400000, guid: e1dfe9e854acce441a3fea390aa08552, type: 2}
+  attack: {fileID: 5877210776597635470}
 --- !u!114 &2286219941605316585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +86,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 2286219941605316585}
   skinnedMeshRenderer: {fileID: 4154450792410131899}
+--- !u!114 &5877210776597635470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739777012841304725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5344c2e371d440c498f1908e2c3e5f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8326665099397840089, guid: 50391c87b55c3f74aaa54acc84523228, type: 3}
+  muzzle: {fileID: 7104350358328496954}
 --- !u!1001 &6814561537540489804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,5 +190,10 @@ SkinnedMeshRenderer:
 --- !u!95 &4742569518673785477 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2252593955722064073, guid: f372562c6d239a54cbdc547091c38ad9, type: 3}
+  m_PrefabInstance: {fileID: 6814561537540489804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7104350358328496954 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4325028629708984694, guid: f372562c6d239a54cbdc547091c38ad9, type: 3}
   m_PrefabInstance: {fileID: 6814561537540489804}
   m_PrefabAsset: {fileID: 0}

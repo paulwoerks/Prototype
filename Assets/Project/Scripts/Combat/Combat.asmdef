@@ -1,7 +1,10 @@
 {
     "name": "Combat",
     "rootNamespace": "PocketHeores.Combat",
-    "references": [],
+    "references": [
+        "GUID:d385c3687d32348449f65e65aa5f7b1a",
+        "GUID:a00ff0d4bf796af4f92cc4e105552327"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

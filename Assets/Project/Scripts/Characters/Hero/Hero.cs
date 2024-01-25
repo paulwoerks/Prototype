@@ -1,5 +1,4 @@
 using UnityEngine;
-using PocketHeroes.Input;
 using PocketHeroes.Anchors;
 using PocketHeroes.Combat;
 
@@ -13,7 +12,7 @@ namespace PocketHeroes.Characters
 
         [Header("Components")]
         [SerializeField] Health health;
-        Animator animator;
+        public Animator Animator { get; private set; } 
         CharacterController characterController;
 
         [Header("References")]
@@ -35,11 +34,12 @@ namespace PocketHeroes.Characters
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
-            animator = transform.Find("Avatar").GetComponent<Animator>();
+            Animator = transform.Find("Avatar").GetComponent<Animator>();
 
             isWalkingHash = Animator.StringToHash("IsWalking");
             isRunningHash = Animator.StringToHash("IsRunning");
             isDeadHash = Animator.StringToHash("IsDead");
+
         }
         private void OnEnable()
         {
@@ -64,14 +64,14 @@ namespace PocketHeroes.Characters
         #endregion
 
         #region Public
-        public void TakeDamage(int amount)
+        public void InflictDamage(int amount)
         {
             if (health.IsDead)
                 return;
 
             health.InflictDamage(amount);
 
-            animator.SetTrigger(isDeadHash);
+            Animator.SetTrigger(isDeadHash);
         }
         #endregion
 
@@ -114,25 +114,26 @@ namespace PocketHeroes.Characters
                 gravity.y = -9.8f;
             }
         }
+        
         void AnimateMovement()
         {
 
-            bool isWalking = animator.GetBool(isWalkingHash);
-            bool isRunning = animator.GetBool(isRunningHash);
+            bool isWalking = Animator.GetBool(isWalkingHash);
+            bool isRunning = Animator.GetBool(isRunningHash);
 
             switch (magnitude)
             {
                 case 0f:
-                    if (isWalking) { animator.SetBool(isWalkingHash, false); }
-                    if (isRunning) { animator.SetBool(isRunningHash, false); }
+                    if (isWalking) { Animator.SetBool(isWalkingHash, false); }
+                    if (isRunning) { Animator.SetBool(isRunningHash, false); }
                     break;
                 case <= 0.5f:
-                    if (!isWalking) { animator.SetBool(isWalkingHash, true); }
-                    if (isRunning) { animator.SetBool(isRunningHash, false); }
+                    if (!isWalking) { Animator.SetBool(isWalkingHash, true); }
+                    if (isRunning) { Animator.SetBool(isRunningHash, false); }
                     break;
                 case > 0.5f:
-                    if (isWalking) { animator.SetBool(isWalkingHash, false); }
-                    if (!isRunning) { animator.SetBool(isRunningHash, true); }
+                    if (isWalking) { Animator.SetBool(isWalkingHash, false); }
+                    if (!isRunning) { Animator.SetBool(isRunningHash, true); }
                     break;
             }
         }

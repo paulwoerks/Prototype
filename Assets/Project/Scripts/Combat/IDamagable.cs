@@ -5,6 +5,6 @@ namespace PocketHeroes.Combat
     /// </summary>
     public interface IDamagable
     {
-        void TakeDamage(int damage) { }
+        void InflictDamage(int damage) { }
     }
 }

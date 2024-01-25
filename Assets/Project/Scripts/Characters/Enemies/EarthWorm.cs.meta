@@ -8,6 +8,9 @@ MonoImporter:
   - animator: {instanceID: 0}
   - group: {fileID: 11400000, guid: 434cef994b7f7134981f0729878d6cc7, type: 2}
   - heroAnchor: {fileID: 11400000, guid: 4fb3440a7d18810439636dc271901271, type: 2}
+  - deathEffect: {fileID: 11400000, guid: 2f5703bcb5e39884d9871088523c8868, type: 2}
+  - damagePopup: {fileID: 637294996884386234, guid: 430d76cb68498e0489623eb256e84529, type: 3}
+  - spawnEffect: {fileID: 11400000, guid: e1dfe9e854acce441a3fea390aa08552, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

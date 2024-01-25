@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using PocketHeroes.Anchors;
-using PocketHeroes.Audio;
 using PocketHeroes.Characters;
+using PocketHeroes.Effects;
 
 namespace PocketHeroes.Combat
 {
     public class MeleeAttack : MonoBehaviour
     {
-        [SerializeField] int damage = 1;
+        [SerializeField] Vector2 damage = new Vector2(1, 3);
         [SerializeField] float attackRange = 5f;
         [SerializeField] float cooldown = 1f;
 
@@ -16,7 +16,7 @@ namespace PocketHeroes.Combat
         [SerializeField] Animator animator;
         [SerializeField] AnimationEventHandler animationEventHandler;
 
-        [SerializeField] PoolableAudio attackSound;
+        [SerializeField] SpecialEffectSO swordSlashFX;
 
         [SerializeField] TransformGroupSO enemies;
 
@@ -29,16 +29,16 @@ namespace PocketHeroes.Combat
             StartCoroutine(CheckForTargets());
         }
 
-        void Perform()
+        void StartAttack()
         {
-            attackSound.Play();
             animator.SetTrigger(animationName);
             animationEventHandler.Subscribe(animationName, InflictDamage);
         }
 
         void InflictDamage()
         {
-            target.GetComponent<IDamagable>().TakeDamage(damage);
+            swordSlashFX.Play(transform.position, transform.rotation, transform);
+            target.GetComponent<IDamagable>().InflictDamage(Random.Range((int)damage.x, (int)damage.y) + 1);
             StartCoroutine(Cooldown());
         }
 
@@ -57,7 +57,7 @@ namespace PocketHeroes.Combat
 
                 if (target)
                 {
-                    Perform();
+                    StartAttack();
                     canAttack = false;
                 } 
                 else

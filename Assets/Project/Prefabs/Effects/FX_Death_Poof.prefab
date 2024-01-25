@@ -42,7 +42,7 @@ ParticleSystem:
   m_GameObject: {fileID: 7751578973968618124}
   serializedVersion: 8
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.25
+      scalar: 2
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -4847,8 +4847,30 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 456990, guid: 7469283484e0dcc4887fa575d1fd7ecc, type: 3}
       insertIndex: 0
       addedObject: {fileID: 6646959028610583190}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 173590, guid: 7469283484e0dcc4887fa575d1fd7ecc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2938876013437092153}
   m_SourcePrefab: {fileID: 100100000, guid: 7469283484e0dcc4887fa575d1fd7ecc, type: 3}
+--- !u!1 &125699213738179748 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 173590, guid: 7469283484e0dcc4887fa575d1fd7ecc, type: 3}
+  m_PrefabInstance: {fileID: 125699213738269362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2938876013437092153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125699213738179748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb234fd06f56af46a88780d795b5da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  timer: 2
 --- !u!4 &125699213738419116 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456990, guid: 7469283484e0dcc4887fa575d1fd7ecc, type: 3}
